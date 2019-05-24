@@ -46,6 +46,7 @@ class GameScreen(private val mGame: JumpActionGame) : ScreenAdapter() {
     private var mStars: ArrayList<Star>
 
     private var mEnemies: ArrayList<Enemy>      // 課題追加
+    private val sound = Gdx.audio.newSound(Gdx.files.internal("shoutotsu.mp3"))
 
     private lateinit var mUfo: Ufo
     private lateinit var mPlayer: Player
@@ -312,8 +313,6 @@ class GameScreen(private val mGame: JumpActionGame) : ScreenAdapter() {
 
 
 
-
-
         // 課題追加
         // Enemyとの当たり判定
         for (i in 0 until mEnemies.size) {
@@ -325,37 +324,14 @@ class GameScreen(private val mGame: JumpActionGame) : ScreenAdapter() {
 
             if (mPlayer.boundingRectangle.overlaps(enemy.boundingRectangle)) {
 
-
-                val sound = Gdx.audio.newSound(Gdx.files.internal("shoutotsu.mp3"))
-
-                // val id = sound.play(1.0f) // play new sound and keep handle for further manipulation
-                // sound.stop(id)
-
-
                 sound.play(1.0f)
 
                 enemy.get()
                 mGameState = GAME_STATE_GAMEOVER
                 return
 
-
-
-
-
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // Stepとの当たり判定
